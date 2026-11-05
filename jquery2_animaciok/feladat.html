@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuert 2 - Feladat</title>
+
+    <style>
+        #animacioPanel{
+            padding: 20px;
+            text-align: center;
+            background-color: #aaa;
+            border: 1px solid black;
+            box-shadow: 3px 3px 5px black;
+            margin: 30px;
+
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+	<!-- Komment --!>
+    <button id="mozgatas">Mozgatas</button><br>
+    <div id="animacioPanel">Animacio panel</div>
+
+    <script src="../jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#mozgatas").click(function(){
+                $("#animacioPanel").animate({
+                    left: "900px"
+                });
+
+                $("#animacioPanel").animate({
+                    top: "400px"
+                });
+
+                $("#animacioPanel").animate({
+                    left: "0"
+                });
+
+                $("#animacioPanel").animate({
+                    top: "0"
+                });
+            });
+        });
+    </script>
+</body>
+</html>

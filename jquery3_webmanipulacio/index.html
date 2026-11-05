@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 3 - Webmanipulacio</title>
+
+    <style>
+        #animacioPanel {
+            padding: 20px;
+            text-align: center;
+            background-color: #aaa;
+            border: 1px solid black;
+            box-shadow: 3px 3px 5px black;
+            display: inline-block;
+            margin: 30px;
+            position: relative;
+        }
+
+
+        .felkover {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h4>Kiolvasas</h4>
+
+    <button type="button" id="textErtekGomb">Szoveg visszaadasa >> text()</button>
+    <button type="button" id="htmlErtekGomb">HTML kod visszaadasa >> html()</button>
+    <button type="button" id="valErtekGomb">Input ertek visszaadasa >> val()</button>
+    <button type="button" id="attrErtekGomb">Input attributum ertek visszaadasa >> attr()</button>
+
+    <p id="leiras">Adj meg egy <b>szam</b> tipusu erteket: </p>
+    <input type="number" id="szamBeviteliMezo" placeholder="Adj meg egy szamot...">
+
+    <hr>
+
+    <h4>Modositas</h4>
+
+    <button type="button" id="textErtekModositoGomb">Szoveg modositasa >> text()</button>
+    <button type="button" id="htmlErtekModositoGomb">HTML kod modositasa >> html()</button>
+    <button type="button" id="valErtekModositoGomb">Input ertek modositasa >> val()</button>
+    <button type="button" id="attrErtekModositoGomb">Input attributum ertek modositasa >> attr()</button>
+
+    <p id="leirasModositas">Adj meg egy <b>szam</b> tipusu erteket: </p>
+    <input type="number" id="beviteliMezo" placeholder="">
+
+    <hr>
+
+    <h4>Hozzafuzes</h4>
+
+    <button type="button" id="listaElejeBovitoGomb">Lista elejenek bovitese >> prepend()</button>
+    <button type="button" id="listaVegeBovitoGomb">Lista vegenek bovitese >> append()</button>
+    <button type="button" id="listaEleElemBeszuroGomb">Lista ele elem beszurasa >> before()</button>
+    <button type="button" id="listaMogeElemBeszuroGomb">Lista moge elem beszurasa >> after()</button>
+
+    <ul>
+        <li>hide()</li>
+    </ul>
+
+    <hr>
+
+    <h4>Elem torlese</h4>
+
+    <button type="button" id="listaUritese">Lista uritese (tartalom torlese) >> empty()</button>
+    <button type="button" id="listaTorlese">Lista torlese (teljes lista torlese tartalommal egyutt) >> remove()</button>
+
+    <hr>
+
+    <h4>Osztaly kezeles (style)</h4>
+
+    <button type="button" id="osztalyHozzaadasGomb">Osztaly hozzaadasa >> addClass()</button>
+    <button type="button" id="osztalyTorleseGomb">Osztaly torlese >> removeClass()</button>
+    <button type="button" id="osztalyKiBeGomb">Osztaly ki / be >> toggleClass()</button>
+
+    <p id="classKezeles">Itt a classt kezelem</p>
+
+    <hr>
+
+    <h4>CSS modositasa</h4>
+
+    <button type="button" id="cssKiolvasasa">CSS elem kiolvasasa >> css()</button>
+    <button type="button" id="cssModositasa">CSS elem modositasa >> css()</button>
+
+    <br>
+
+    <div id="animacioPanel">Itt a CSS-t manipulalom</div>
+
+    <script src="../jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Ertek kilvasasa HTML-bol
+            $("#textErtekGomb").click(function () {
+                alert(`Szoveges tartalom: ${$("#leiras").text()}`);
+            });
+
+            $("#htmlErtekGomb").click(function () {
+                alert(`Szoveges tartalom: ${$("#leiras").html()}`);
+            });
+
+            $("#valErtekGomb").click(function () {
+                alert(`Szoveges tartalom: ${$("#szamBeviteliMezo").val()}`);
+            });
+
+            $("#attrErtekGomb").click(function () {
+                alert(`Szoveges tartalom: ${$("#szamBeviteliMezo").attr("placeholder")}`);
+            });
+
+            //Ertek kilvasasa HTML-bol
+            $("#textErtekModositoGomb").click(function () {
+                $("#leirasModositas").text("<b>Modositott szoveg</b>");
+            });
+
+            $("#htmlErtekModositoGomb").click(function () {
+                $("#leirasModositas").html("<b>Modositott szoveg</b>");
+            });
+
+            $("#valErtekModositoGomb").click(function () {
+                $("#beviteliMezo").val(33);
+            });
+
+            $("#attrErtekModositoGomb").click(function () {
+                $("#beviteliMezo").attr("placeholder", "Almafa");
+            });
+
+            //Hozzafuzes
+            $("#listaElejeBovitoGomb").click(function () {
+                $("ul").prepend("<li>prepend</li>");
+            });
+
+            $("#listaVegeBovitoGomb").click(function () {
+                $("ul").append("<li>append</li>");
+            });
+
+            $("#listaEleElemBeszuroGomb").click(function () {
+                $("ul").before("<h2>before</h2>");
+            });
+
+            $("#listaMogeElemBeszuroGomb").click(function () {
+                $("ul").after("<h2>after</h2>");
+            });
+
+            //Torles
+            $("#listaUritese").click(function () {
+                $("ul").empty();
+            });
+
+            $("#listaTorlese").click(function () {
+                $("ul").remove();
+            });
+
+            //Osztalykezeles
+            $("#osztalyHozzaadasGomb").click(function () {
+                $("#classKezeles").addClass("felkover");
+            });
+
+            $("#osztalyTorleseGomb").click(function () {
+                $("#classKezeles").removeClass("felkover");
+            });
+
+            $("#osztalyKiBeGomb").click(function () {
+                $("#classKezeles").toggleClass("felkover");
+            });
+
+            //CSS kezeles
+            $("#cssKiolvasasa").click(function () {
+                alert($("#animacioPanel").css("background-color"));
+            });
+
+            $("#cssModositasa").click(function () {
+                $("#animacioPanel").css("background-color", "orange");
+            });
+        });
+    </script>
+</body>
+
+</html>

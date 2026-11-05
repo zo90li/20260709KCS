@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 2 - Animaciok</title>
+
+    <style>
+        #animacioPanel{
+            padding: 20px;
+            text-align: center;
+            background-color: #aaa;
+            border: 1px solid black;
+            box-shadow: 3px 3px 5px black;
+            margin: 30px;
+
+            display: inline-block;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button type="button" id="animacioPanelGomb">Alap animacio</button>
+    <button type="button" id="egyszeruAnimacioGomb">Egyszeru animacio</button>
+    <button type="button" id="osszetettAnimacioGomb">Osszetett animacio</button>
+    <button type="button" id="chainFadeGomb">Chain fade</button>
+    <button type="button" id="chainSlideGomb">Chain slide</button>
+    <button type="button" id="callbackHideGomb">Callback hide</button>
+    <button type="button" id="callbackShowGomb">Callback show</button>
+    <br><br>
+
+    <div id="animacioPanel">Ezen az elemen mutatom be az animacio tulajdonsagot jQuery-ben.</div>
+    
+    <script src="../jquery-4.0.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //Animate
+            $("#animacioPanelGomb").click(function(){
+                $("#animacioPanel").animate({
+                    left: "200px"
+                });
+            });
+
+            $("#egyszeruAnimacioGomb").click(function(){
+                $("#animacioPanel").animate({
+                    left: "100px",
+                    fontSize: "+=4"
+                });
+            });
+
+            $("#osszetettAnimacioGomb").click(function(){
+                $("#animacioPanel").animate({
+                    left: "5px",
+                    fontSize: "+=4",
+                    height: "100px"
+                }, "slow");
+
+                $("#animacioPanel").animate({
+                    left: "40px"
+                }, "fast");
+
+                $("#animacioPanel").animate({
+                    left: "10px",
+                    height: "50px"
+                }, 5000);
+
+                $("#animacioPanel").animate({
+                    left: "100px",
+                    fontSize: "+=4"
+                });
+            });
+
+            //Chain
+            $("#chainFadeGomb").click(function(){
+                $("#animacioPanel").fadeOut(3000).fadeIn("slow");
+            });
+
+            $("#chainSlideGomb").click(function(){
+                $("#animacioPanel").slideUp(3000).slideDown("slow");
+            });
+
+            //Callback
+            $("#callbackHideGomb").click(function(){
+                $("#animacioPanel").hide("slow", function(){
+                    alert("Az elem el lett rejtve!");
+                });
+            });
+
+            $("#callbackShowGomb").click(function(){
+                $("#animacioPanel").show("slow", function(){
+                    alert("Az elem megjelent!");
+                });
+            });
+        });
+    </script>
+</body>
+</html>
